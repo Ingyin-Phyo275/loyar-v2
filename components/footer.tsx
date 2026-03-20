@@ -44,15 +44,14 @@ export function Footer() {
           {/* Brand */}
           <div className="lg:col-span-1">
             <Link href="/" className="flex items-center gap-2 mb-4">
-              <Image
-                src="/images/loyar-logo.jpg"
+              {/* <Image
+                src="/images/loyar_logo.png"
                 alt="Loyar Taxi Logo"
                 width={40}
                 height={40}
-                className="rounded-lg"
-              />
+              /> */}
               <span className="text-xl font-bold">
-                Loyar<span className="text-primary">Taxi</span>
+                Loyar<span className="text-primary"> Myanmar</span>
               </span>
             </Link>
             <p className="text-background/70 text-sm mb-6">

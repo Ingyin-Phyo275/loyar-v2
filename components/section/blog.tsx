@@ -7,7 +7,7 @@ export default function Blog() {
       title: "5 Tips for a Safe Night Ride",
       description:
         "Learn how to stay safe during late-night taxi rides with these essential tips from our safety team.",
-      image: "https://kit8.net/wp-content/uploads/2020/12/Taxi@2x-2.png",
+      image: "https://img.freepik.com/free-photo/yellow-black-sign-taxi-placed-top-car-night_181624-10624.jpg?semt=ais_hybrid&w=740&q=80",
       content: (
         <>
           <h4>The Village's Secret</h4>
@@ -44,7 +44,7 @@ export default function Blog() {
       title: "Introducing Loyar Poh for Families",
       description:
         "Our new family-friendly service comes with child seats, extra space, and trained drivers.",
-      image: "https://kit8.net/wp-content/uploads/2020/12/Taxi@2x-2.png",
+      image: "https://gerrardscrosstaxis.com/wp-content/uploads/2025/12/ChatGPT-Image-Dec-15-2025-09_18_17-AM.png",
       content: (
         <>
           <h4>Family-Friendly Travel</h4>
@@ -59,7 +59,7 @@ export default function Blog() {
       title: "How We're Reducing Carbon Emissions",
       description:
         "Discover our commitment to sustainability and our electric vehicle initiative.",
-      image: "https://kit8.net/wp-content/uploads/2020/12/Taxi@2x-2.png",
+      image: "https://primetaxis.uk/wp-content/uploads/2025/10/blog40.png",
       content: (
         <>
           <h4>Electric Initiative</h4>

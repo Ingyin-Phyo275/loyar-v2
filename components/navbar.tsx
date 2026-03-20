@@ -63,17 +63,16 @@ export function Navbar() {
             className="flex items-center gap-2"
           >
             <Image
-              src="/images/loyar-logo.jpg"
+              src="/images/loyar_logo.png"
               alt="Loyar Taxi Logo"
-              width={48}
-              height={48}
-              className="rounded-lg"
+              width={60}
+              height={60}
               loading="eager"
               priority
             />
-            <span className="text-xl font-bold text-foreground">
+            {/* <span className="text-xl font-bold text-foreground">
               Loyar<span className="text-primary">Taxi</span>
-            </span>
+            </span> */}
           </a>
 
           {/* Desktop Navigation */}
@@ -97,7 +96,7 @@ export function Navbar() {
           {/* Desktop CTA */}
           <div className="hidden lg:flex items-center gap-4">
             <Button asChild className="bg-primary hover:bg-primary/90 text-primary-foreground">
-              <a href="#book" onClick={(e) => scrollToSection(e, "#book")}>Book a Ride</a>
+              <a href="#contact" onClick={(e) => scrollToSection(e, "#contact")}>Contact Us</a>
             </Button>
           </div>
 

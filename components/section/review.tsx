@@ -2,6 +2,7 @@ import React from "react";
 import { FadeInWhenVisible } from "../page-wrapper";
 import { Card, CardContent } from "../ui/card";
 import { Quote, Star } from "lucide-react";
+import { Marquee } from "../ui/marquee";
 
 export default function Reviews() {
   const riderReviews = [
@@ -51,6 +52,10 @@ export default function Reviews() {
       experience: "4 years",
     },
   ];
+
+  const firstRow = riderReviews.slice(0, riderReviews.length / 2);
+  const secondRow = riderReviews.slice(riderReviews.length / 2);
+
   return (
     <div className="container mx-auto px-4 lg:px-8">
       <div className="text-center max-w-2xl mx-auto mb-16">
@@ -71,11 +76,25 @@ export default function Reviews() {
         <h3 className="text-2xl font-bold text-foreground mb-8 text-center">
           Rider Reviews
         </h3>
-        <div className="grid md:grid-cols-3 gap-6">
+        {/* <div className="grid md:grid-cols-3 gap-6">
           {riderReviews.map((review, index) => (
-
-            <ReviewCard index={index} review={review} key={index}/>
+            <ReviewCard index={index} review={review} key={index} />
           ))}
+        </div> */}
+
+        <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
+          <Marquee pauseOnHover className="[--duration:20s]">
+            {firstRow.map((review, index) => (
+              <ReviewCard index={index} review={review} key={index} />
+            ))}
+          </Marquee>
+          <Marquee reverse pauseOnHover className="[--duration:20s]">
+            {secondRow.map((review, index) => (
+              <ReviewCard index={index} review={review} key={index} />
+            ))}
+          </Marquee>
+          <div className="from-background pointer-events-none absolute inset-y-0 left-0 w-1/4 "></div>
+          <div className="from-background pointer-events-none absolute inset-y-0 right-0 w-1/4 "></div>
         </div>
       </div>
 
@@ -86,7 +105,7 @@ export default function Reviews() {
         </h3>
         <div className="grid md:grid-cols-3 gap-6">
           {driverReviews.map((review, index) => (
-            <ReviewCard index={index} review={review} key={index}/>
+            <ReviewCard index={index} review={review} key={index} />
           ))}
         </div>
       </div>
@@ -113,7 +132,7 @@ function ReviewCard({ index, review }: ReviewCardProps) {
   hover:-translate-y-2 hover:shadow-xl hover:border-primary/70"
       >
         {" "}
-        <CardContent className="p-0 flex flex-col h-full">
+        <CardContent className="p-0 flex flex-col h-full max-w-xs">
           <Quote className="w-10 h-10 text-primary/30 mb-4" />
           <p className="text-foreground mb-6 grow">
             &ldquo;{review.comment}&rdquo;
