@@ -1,4 +1,4 @@
-import React from "react";
+"use client"
 import { Card, CardContent } from "../ui/card";
 import { Mail, MapPin, Phone } from "lucide-react";
 

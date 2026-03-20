@@ -1,4 +1,4 @@
-"use client";
+"use server"
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { SectionWrapper } from "@/components/page-wrapper";
@@ -11,11 +11,13 @@ import Reviews from "@/components/section/review";
 import Blog from "@/components/section/blog";
 import Service from "@/components/section/service";
 import Hero from "@/components/section/hero";
-
-export default function HomePage() {
-  
+import { getUsers } from "@/server/actions/testActions";
+export default async function HomePage() {
+  const users = await getUsers();
+  console.log("users", users)
   return (
     <main className="min-h-screen">
+
       <Navbar />
 
       {/* Hero Section */}

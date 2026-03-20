@@ -1,4 +1,4 @@
-import React from "react";
+"use client";
 import { ExpandableCard } from "../ui/expendable-card";
 
 export default function Blog() {

@@ -1,4 +1,4 @@
-import React from "react";
+"use client";
 import { FadeInWhenVisible } from "../page-wrapper";
 import { Card, CardContent } from "../ui/card";
 import { Shield, Star, Users } from "lucide-react";

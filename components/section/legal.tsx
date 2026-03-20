@@ -1,5 +1,5 @@
+"use client"
 import { CheckCircle, FileText, Lock } from "lucide-react";
-import React from "react";
 import { Button } from "../ui/button";
 import { Card, CardContent } from "../ui/card";
 import { FadeInWhenVisible } from "../page-wrapper";

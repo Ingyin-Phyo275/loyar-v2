@@ -1,4 +1,4 @@
-import React from "react";
+"use client"
 import { FadeInWhenVisible } from "../page-wrapper";
 import { NumberTicker } from "../ui/number-ticker";
 

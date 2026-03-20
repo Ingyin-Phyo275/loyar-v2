@@ -1,3 +1,4 @@
+"use client";
 import { motion } from "framer-motion";
 import { TypewriterEffect } from "../ui/typewriter-efffect";
 import { Button } from "../ui/button";
