@@ -1,39 +1,40 @@
-import { getAccessToken } from "@/lib/auth";
-import axios from "axios";
-import { signOut } from "next-auth/react";
+// src/api/axios.js
+import { decryptAuthData } from '@/lib/helper';
+import axios from 'axios';
 
-const baseUrl =
-  process.env.NEXT_PUBLIC_API_BASE_URL || "https://api.drive.amuze.com.mm/api";
-
-// baseUrl is defined above
-
-const HTTP = axios.create({
-  baseURL: baseUrl,
+const baseURL = process.env.NEXT_PUBLIC_API_BASE_URL;
+const axiosInstance = axios.create({
+  baseURL: baseURL, //  Set your API base URL
+  timeout: 90000, // Optional: request timeout
   headers: {
-    "Content-Type": "application/json",
+    'Content-Type': 'application/json',
+    'Accept': 'application/json',
   },
 });
 
-HTTP.interceptors.request.use(
-  async (config) => {
-    const tokenData = await getAccessToken();
-    if (tokenData) {
-      config.headers["Authorization"] = `Bearer ${tokenData}`;
+// Optional: Add interceptors for request/response
+axiosInstance.interceptors.request.use(
+  (config) => {
+    // e.g., Add token to headers
+    const user = decryptAuthData(localStorage.getItem('user')!);
+    const token = user?.token;
+    if (token) {
+      config.headers['Authorization'] = `Bearer ${token}`;
     }
     return config;
   },
   (error) => Promise.reject(error)
 );
 
-HTTP.interceptors.response.use(
+axiosInstance.interceptors.response.use(
   (response) => response,
-  async (error) => {
-    if (error.response?.status === 401) {
-      signOut({ callbackUrl: "/login" });
-    }
-
+  (error) => {
+    // Global error handling
+    console.error('API error:', error.response || error.message);
     return Promise.reject(error);
   }
 );
 
-export default HTTP;
+
+
+export default axiosInstance;

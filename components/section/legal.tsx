@@ -22,7 +22,7 @@ export default function Legal() {
 
       <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
         <FadeInWhenVisible delay={0.1}>
-          <Card className="group hover:shadow-xl transition-all duration-300 border-border hover:border-primary/50 overflow-hidden">
+          <Card className="h-full group hover:shadow-xl transition-all duration-300 border-border hover:border-primary/50 overflow-hidden">
             <CardContent className="p-8">
               <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary transition-colors">
                 <FileText
@@ -67,7 +67,7 @@ export default function Legal() {
         </FadeInWhenVisible>
 
         <FadeInWhenVisible delay={0.2}>
-          <Card className="group hover:shadow-xl transition-all duration-300 border-border hover:border-primary/50 overflow-hidden">
+          <Card className="h-full group hover:shadow-xl transition-all duration-300 border-border hover:border-primary/50 overflow-hidden">
             <CardContent className="p-8">
               <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary transition-colors">
                 <Lock

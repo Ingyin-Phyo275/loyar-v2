@@ -13,6 +13,7 @@ import Service from "@/components/section/service";
 import Hero from "@/components/section/hero";
 
 export default function HomePage() {
+  
   return (
     <main className="min-h-screen">
       <Navbar />

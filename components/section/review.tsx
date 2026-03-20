@@ -103,7 +103,7 @@ export default function Reviews() {
         <h3 className="text-2xl font-bold text-foreground mb-8 text-center">
           Driver Reviews
         </h3>
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 gap-6">
           {driverReviews.map((review, index) => (
             <ReviewCard index={index} review={review} key={index} />
           ))}
