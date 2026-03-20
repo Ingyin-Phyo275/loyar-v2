@@ -53,7 +53,7 @@ export default function Reviews() {
     },
   ];
 
-  const firstRow = riderReviews.slice(0, riderReviews.length / 2);
+  const firstRow = riderReviews.slice(0, riderReviews.length);
   const secondRow = riderReviews.slice(riderReviews.length / 2);
 
   return (
@@ -133,9 +133,9 @@ function ReviewCard({ index, review }: ReviewCardProps) {
       >
         {" "}
         <CardContent className="p-0 flex flex-col h-[90%] max-w-sm">
-          <Quote className="w-8 h-8 text-primary/30 mb-4" />
+          {/* <Quote className="w-8 h-8 text-primary/30 mb-4" /> */}
           <p className="text-foreground text-sm mb-6 grow">
-            &ldquo;{review.comment}&rdquo;
+            {review.comment}&rdquo;
           </p>
 
           <div className="flex items-center gap-4">

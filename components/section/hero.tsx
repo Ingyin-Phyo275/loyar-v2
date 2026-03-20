@@ -2,26 +2,14 @@
 import { motion } from "framer-motion";
 import { TypewriterEffect } from "../ui/typewriter-efffect";
 import { Button } from "../ui/button";
-import { ArrowRight, Clock, Shield, Star } from "lucide-react";
+import { ArrowRight, Clock, Shield, Star, Car, Zap, Crown } from "lucide-react";
 import { Spotlight } from "../ui/spotlight-new";
+
 export default function Hero() {
   const features = [
-    {
-      icon: Shield,
-      title: "Safe & Secure",
-      description:
-        "All drivers are verified and vehicles are regularly inspected",
-    },
-    {
-      icon: Clock,
-      title: "24/7 Available",
-      description: "Book a ride anytime, day or night, wherever you are",
-    },
-    {
-      icon: Star,
-      title: "Top Rated",
-      description: "4.9 star rating from over 100,000 happy customers",
-    },
+    { icon: Shield, title: "Safe & Secure" },
+    { icon: Clock, title: "24/7 Available" },
+    { icon: Star, title: "Top Rated" },
   ];
 
   const words = [
@@ -30,62 +18,128 @@ export default function Hero() {
     { text: "Loyar", className: "text-primary" },
     { text: "Taxi" },
   ];
+
+  const taxiTypes = [
+    {
+      name: "Standard",
+      icon: Car,
+      description: "Affordable everyday rides",
+    },
+    {
+      name: "EV Taxi",
+      icon: Zap,
+      description: "Eco-friendly electric rides",
+    },
+    {
+      name: "Luxury",
+      icon: Crown,
+      description: "Premium comfort experience",
+    },
+  ];
+
   return (
-<section
-  id="home"
-  className="w-full max-w-7xl min-h-screen flex items-center justify-center pt-20 overflow-hidden relative bg-linear-to-br from-secondary via-background to-background"
->
-  {/* <div className="absolute inset-0 bg-linear-to-br from-secondary via-background to-background" /> */}
-  <Spotlight />
-  <motion.div
-    initial={{ opacity: 0, x: -50 }}
-    animate={{ opacity: 1, x: 0 }}
-    transition={{ duration: 0.7, ease: "easeOut" }}
-    className="flex flex-col items-center text-center px-4"
-  >
-    <span className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary font-medium text-sm mb-6">
-      Your Trusted Ride Partner
-    </span>
+    <section className="relative w-full min-h-screen flex items-center justify-center px-6 md:px-10 overflow-hidden bg-gradient-to-br from-background via-secondary/40 to-background">
+      {/* Background Glow */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-primary/20 blur-[120px] rounded-full" />
 
-      <TypewriterEffect words={words} />
+      <Spotlight />
 
-    <p className="text-lg text-muted-foreground mb-8 max-w-lg">
-      Book your ride in seconds. Loyar Taxi offers safe, reliable, and
-      affordable transportation services with professional drivers.
-    </p>
-
-    <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
-      <Button
-        size="lg"
-        asChild
-        className="hover:bg-white hover:text-primary hover:border-primary hover:border"
-      >
-        <a href="#book">
-          Book a Ride <ArrowRight className="ml-2" size={18} />
-        </a>
-      </Button>
-      <Button size="lg" variant="outline" asChild className="border border-primary">
-        <a href="#services">View Services</a>
-      </Button>
-    </div>
-
-    <div className="flex flex-wrap items-center gap-6 justify-center">
-      {features.map((feature, index) => (
+      <div className="grid grid-cols-1 md:grid-cols-[1fr_340px] gap-10 max-w-7xl w-full z-10">
+        {/* LEFT */}
         <motion.div
-          key={feature.title}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-          className="flex items-center gap-2 "
+          initial={{ opacity: 0, x: -40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.7 }}
+          className="flex flex-col items-center md:items-start text-center md:text-left"
         >
-          <feature.icon className="text-primary" size={20} />
-          <span className="text-sm font-medium text-foreground">
-            {feature.title}
-          </span>
+          {/* Badge */}
+          <div className="mb-6 px-4 py-2 text-sm rounded-full bg-primary/10 text-primary backdrop-blur border border-primary/20">
+            Your Trusted Ride Partner
+          </div>
+
+          {/* Title */}
+          <TypewriterEffect words={words} />
+
+          {/* Description */}
+          <p className="mt-4 text-lg text-muted-foreground max-w-xl leading-relaxed">
+            Book your ride in seconds. Enjoy safe, reliable, and affordable
+            journeys with professional drivers anytime, anywhere.
+          </p>
+
+          {/* Buttons */}
+          <div className="flex flex-col sm:flex-row gap-4 mt-8">
+            <Button
+              size="lg"
+              className="group bg-primary text-white hover:scale-105 transition-all shadow-lg shadow-primary/30"
+              asChild
+            >
+              <a href="#book">
+                Book a Ride
+                <ArrowRight className="ml-2 group-hover:translate-x-1 transition" />
+              </a>
+            </Button>
+
+            <Button
+              size="lg"
+              variant="outline"
+              className="border-primary/40 hover:bg-primary/10 backdrop-blur"
+              asChild
+            >
+              <a href="#services">View Services</a>
+            </Button>
+          </div>
+
+          {/* Features */}
+          <div className="flex flex-wrap gap-6 mt-10">
+            {features.map((f, i) => (
+              <motion.div
+                key={f.title}
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 + i * 0.1 }}
+                className="flex items-center gap-2 text-sm text-foreground/80"
+              >
+                <f.icon className="text-primary" size={18} />
+                {f.title}
+              </motion.div>
+            ))}
+          </div>
         </motion.div>
-      ))}
-    </div>
-  </motion.div>
-</section>
+
+        {/* RIGHT */}
+        <motion.div
+          initial={{ opacity: 0, x: 40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.7 }}
+          className="w-[340px]"
+        >
+          <div className="flex flex-col gap-5">
+            {taxiTypes.map((taxi, index) => (
+              <motion.div
+                key={taxi.name}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.15 }}
+                className="group relative rounded-2xl p-5 border border-white/10 backdrop-blur-xl bg-white/5  transition-all duration-300 shadow-lg"
+              >
+                {/* Glow on hover */}
+                <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 bg-primary/20 blur-xl transition" />
+
+                <div className="relative flex items-center gap-4">
+                  <div className="p-2 rounded-lg bg-primary/10 group-hover:bg-primary transition-colors duration-300">
+                    <taxi.icon className="w-5 h-5 group-hover:text-white transition-colors duration-300" />
+                  </div>
+
+                  <div>
+                    <h3 className="font-semibold text-lg">{taxi.name}</h3>
+                    <p className="text-xs opacity-80">{taxi.description}</p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      </div>
+    </section>
   );
 }

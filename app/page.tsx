@@ -23,7 +23,7 @@ export default async function HomePage() {
       {/* Hero Section */}
       <section
         id="home"
-        className="relative min-h-screen flex items-center pt-20 overflow-hidden"
+        className="relative min-h-screen flex items-center pt-0 overflow-hidden"
       >
         <Hero />
       </section>
