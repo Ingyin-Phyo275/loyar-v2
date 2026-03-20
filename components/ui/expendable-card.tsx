@@ -1,18 +1,18 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { AnimatePresence, motion } from "framer-motion"
+import * as React from "react";
+import { AnimatePresence, motion } from "framer-motion";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 interface ExpandableCardProps {
-  title: string
-  src: string
-  description: string
-  children?: React.ReactNode
-  className?: string
-  classNameExpanded?: string
-  [key: string]: any
+  title: string;
+  src: string;
+  description: string;
+  children?: React.ReactNode;
+  className?: string;
+  classNameExpanded?: string;
+  [key: string]: any;
 }
 
 export function ExpandableCard({
@@ -24,33 +24,33 @@ export function ExpandableCard({
   classNameExpanded,
   ...props
 }: ExpandableCardProps) {
-  const [active, setActive] = React.useState(false)
-  const cardRef = React.useRef<HTMLDivElement>(null)
-  const id = React.useId()
+  const [active, setActive] = React.useState(false);
+  const cardRef = React.useRef<HTMLDivElement>(null);
+  const id = React.useId();
 
   React.useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
-        setActive(false)
+        setActive(false);
       }
-    }
+    };
 
     const handleClickOutside = (event: MouseEvent | TouchEvent) => {
       if (cardRef.current && !cardRef.current.contains(event.target as Node)) {
-        setActive(false)
+        setActive(false);
       }
-    }
+    };
 
-    window.addEventListener("keydown", onKeyDown)
-    document.addEventListener("mousedown", handleClickOutside)
-    document.addEventListener("touchstart", handleClickOutside)
+    window.addEventListener("keydown", onKeyDown);
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("touchstart", handleClickOutside);
 
     return () => {
-      window.removeEventListener("keydown", onKeyDown)
-      document.removeEventListener("mousedown", handleClickOutside)
-      document.removeEventListener("touchstart", handleClickOutside)
-    }
-  }, [])
+      window.removeEventListener("keydown", onKeyDown);
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("touchstart", handleClickOutside);
+    };
+  }, []);
 
   return (
     <>
@@ -68,7 +68,7 @@ export function ExpandableCard({
         {active && (
           <div
             className={cn(
-              "fixed inset-0 z-[100] grid place-items-center before:pointer-events-none sm:mt-16"
+              "fixed inset-0 z-[100] grid place-items-center before:pointer-events-none sm:mt-16",
             )}
           >
             <motion.div
@@ -76,7 +76,7 @@ export function ExpandableCard({
               ref={cardRef}
               className={cn(
                 "relative flex h-full w-full max-w-[850px] flex-col overflow-auto bg-zinc-50 shadow-sm [-ms-overflow-style:none] [-webkit-overflow-scrolling:touch] [scrollbar-width:none] sm:rounded-t-3xl dark:bg-zinc-950 dark:shadow-none",
-                classNameExpanded
+                classNameExpanded,
               )}
               {...props}
             >
@@ -157,7 +157,7 @@ export function ExpandableCard({
         onClick={() => setActive(true)}
         className={cn(
           "flex cursor-pointer flex-col items-center justify-between rounded-2xl border border-gray-200/70 bg-zinc-50 p-3 shadow-sm dark:border-zinc-900 dark:bg-zinc-950 dark:shadow-none",
-          className
+          className,
         )}
       >
         <div className="flex flex-col gap-4">
@@ -174,7 +174,9 @@ export function ExpandableCard({
                 layoutId={`description-${description}-${id}`}
                 className="text-sm font-medium text-zinc-500 md:text-left dark:text-zinc-400"
               >
-                {description}
+                {description.length > 40
+                  ? description.slice(0, 40) + "..."
+                  : description}
               </motion.p>
               <motion.h3
                 layoutId={`title-${title}-${id}`}
@@ -182,38 +184,21 @@ export function ExpandableCard({
               >
                 {title}
               </motion.h3>
-            </div>
-            <motion.button
-              aria-label="Open card"
-              layoutId={`button-${title}-${id}`}
-              className={cn(
-                "flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-gray-200/90 bg-zinc-50 text-neutral-700 transition-colors duration-300 hover:border-gray-300/90 hover:bg-neutral-50 hover:text-black focus:outline-none dark:border-zinc-900 dark:bg-zinc-950 dark:text-white/70 dark:hover:border-zinc-800 dark:hover:bg-neutral-950 dark:hover:text-white",
-                className
-              )}
-            >
-              <motion.div
-                animate={{ rotate: active ? 45 : 0 }}
-                transition={{ duration: 0.4 }}
+
+              <motion.button
+                aria-label="Open card"
+                layoutId={`button-${title}-${id}`}
+                className={cn(
+                  "cursor-pointer text-sm inline-flex items-center text-primary font-medium underline underline-offset-2 transition-colors duration-300 hover:text-primary/80 focus:outline-none",
+                  className,
+                )}
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M5 12h14" />
-                  <path d="M12 5v14" />
-                </svg>
-              </motion.div>
-            </motion.button>
+                Read More...
+              </motion.button>
+            </div>
           </div>
         </div>
       </motion.div>
     </>
-  )
+  );
 }
