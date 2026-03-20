@@ -1,34 +1,80 @@
 import React from "react";
-import { FadeInWhenVisible } from "../page-wrapper";
-import { Card, CardContent } from "../ui/card";
-import { FileText } from "lucide-react";
+import { ExpandableCard } from "../ui/expendable-card";
 
 export default function Blog() {
   const blogPosts = [
     {
       title: "5 Tips for a Safe Night Ride",
-      excerpt:
+      description:
         "Learn how to stay safe during late-night taxi rides with these essential tips from our safety team.",
-      category: "Safety",
-      date: "Mar 15, 2026",
+      image: "https://kit8.net/wp-content/uploads/2020/12/Taxi@2x-2.png",
+      content: (
+        <>
+          <h4>The Village's Secret</h4>
+          <p>
+            Deep within the mist-covered mountains of Japan, there lies a small,
+            secluded village known as <i>Yamadori</i>. For centuries, the villagers
+            have lived in harmony with nature, but they also harbor a dark secret—
+            an ancient pact with the spirits of the forest, the <i>yokai</i>.
+          </p>
+          <h4>The Mysterious Disappearances</h4>
+          <p>
+            Recently, strange occurrences have unsettled the peace of <i>Yamadori</i>.
+            People have started to disappear without a trace, vanishing into the dense
+            forest at night. Some say it is the work of the <i>yurei</i>, vengeful spirits
+            of those who died unjustly. Others whisper of the return of the fearsome
+            <i> Tengu</i>.
+          </p>
+          <h4>The Encounter with the Kitsune</h4>
+          <p>
+            One night, while performing a sacred ritual, the <i>yamabushi</i>
+            encounters a mysterious figure in the forest—a beautiful woman with
+            fox-like features. She reveals herself to be a <i>kitsune</i>, a
+            shapeshifting fox spirit.
+          </p>
+          <h4>The Final Confrontation</h4>
+          <p>
+            With time running out, the <i>yamabushi</i> must uncover the forgotten
+            history of Yamadori and restore balance between the human and spirit worlds.
+          </p>
+        </>
+      ),
     },
     {
       title: "Introducing Loyar Poh for Families",
-      excerpt:
+      description:
         "Our new family-friendly service comes with child seats, extra space, and trained drivers.",
-      category: "News",
-      date: "Mar 10, 2026",
+      image: "https://kit8.net/wp-content/uploads/2020/12/Taxi@2x-2.png",
+      content: (
+        <>
+          <h4>Family-Friendly Travel</h4>
+          <p>
+            Loyar Poh now offers services designed for families with children, including
+            safe child seats and extra spacious vehicles.
+          </p>
+        </>
+      ),
     },
     {
       title: "How We're Reducing Carbon Emissions",
-      excerpt:
+      description:
         "Discover our commitment to sustainability and our electric vehicle initiative.",
-      category: "Sustainability",
-      date: "Mar 5, 2026",
+      image: "https://kit8.net/wp-content/uploads/2020/12/Taxi@2x-2.png",
+      content: (
+        <>
+          <h4>Electric Initiative</h4>
+          <p>
+            We are gradually replacing our fleet with electric vehicles to reduce
+            carbon emissions and contribute to a greener future.
+          </p>
+        </>
+      ),
     },
   ];
+
   return (
     <div className="container mx-auto px-4 lg:px-8">
+      {/* Header */}
       <div className="text-center max-w-2xl mx-auto mb-16">
         <span className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary font-medium text-sm mb-4">
           Our Blog
@@ -41,31 +87,18 @@ export default function Blog() {
         </p>
       </div>
 
+      {/* Expandable Blog Cards */}
       <div className="grid md:grid-cols-3 gap-8">
-        {blogPosts.map((post, index) => (
-          <FadeInWhenVisible key={post.title} delay={index * 0.1}>
-            <Card className="overflow-hidden border-border hover:border-primary/50 transition-colors h-full">
-              <div className="h-48 bg-linear-to-br from-primary/20 to-primary/5 flex items-center justify-center">
-                <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center">
-                  <FileText className="w-8 h-8 text-primary" />
-                </div>
-              </div>
-              <CardContent className="p-6">
-                <div className="flex items-center gap-3 mb-3">
-                  <span className="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-medium">
-                    {post.category}
-                  </span>
-                  <span className="text-muted-foreground text-xs">
-                    {post.date}
-                  </span>
-                </div>
-                <h3 className="text-lg font-semibold text-foreground mb-2">
-                  {post.title}
-                </h3>
-                <p className="text-muted-foreground text-sm">{post.excerpt}</p>
-              </CardContent>
-            </Card>
-          </FadeInWhenVisible>
+        {blogPosts.map((post) => (
+          <ExpandableCard
+            key={post.title}
+            title={post.title}
+            src={post.image}
+            description={post.description}
+            className="overflow-hidden border-border hover:border-primary/50 transition-colors h-full"
+          >
+            {post.content}
+          </ExpandableCard>
         ))}
       </div>
     </div>
