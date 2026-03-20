@@ -2,6 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import { motion, stagger, useAnimate, useInView } from "framer-motion";
+import { Car } from "lucide-react";
 import { useEffect } from "react";
 
 export const TypewriterEffect = ({
@@ -90,10 +91,12 @@ export const TypewriterEffect = ({
           repeatType: "reverse",
         }}
         className={cn(
-          "inline-block rounded-sm w-[4px] h-4 md:h-6 lg:h-10 bg-primary",
+          "inline-block  w-10 h-14 md:h-6 lg:h-10 ",
           cursorClassName
         )}
-      ></motion.span>
+      >
+        <Car className="w-full h-full text-primary items-center"/>
+      </motion.span>
     </div>
   );
 };

@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { TypewriterEffect } from "../ui/typewriter-efffect";
 import { Button } from "../ui/button";
 import { ArrowRight, Clock, Shield, Star } from "lucide-react";
+import { Spotlight } from "../ui/spotlight-new";
 export default function Hero() {
   const features = [
     {
@@ -32,10 +33,10 @@ export default function Hero() {
   return (
 <section
   id="home"
-  className="w-full max-w-7xl min-h-screen flex items-center justify-center pt-20 overflow-hidden relative"
+  className="w-full max-w-7xl min-h-screen flex items-center justify-center pt-20 overflow-hidden relative bg-linear-to-br from-secondary via-background to-background"
 >
   {/* <div className="absolute inset-0 bg-linear-to-br from-secondary via-background to-background" /> */}
-
+  <Spotlight />
   <motion.div
     initial={{ opacity: 0, x: -50 }}
     animate={{ opacity: 1, x: 0 }}
@@ -75,7 +76,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-          className="flex items-center gap-2"
+          className="flex items-center gap-2 "
         >
           <feature.icon className="text-primary" size={20} />
           <span className="text-sm font-medium text-foreground">

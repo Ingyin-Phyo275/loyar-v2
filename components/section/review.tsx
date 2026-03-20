@@ -132,9 +132,9 @@ function ReviewCard({ index, review }: ReviewCardProps) {
   hover:-translate-y-2 hover:shadow-xl hover:border-primary/70"
       >
         {" "}
-        <CardContent className="p-0 flex flex-col h-full max-w-xs">
-          <Quote className="w-10 h-10 text-primary/30 mb-4" />
-          <p className="text-foreground mb-6 grow">
+        <CardContent className="p-0 flex flex-col h-[90%] max-w-sm">
+          <Quote className="w-8 h-8 text-primary/30 mb-4" />
+          <p className="text-foreground text-sm mb-6 grow">
             &ldquo;{review.comment}&rdquo;
           </p>
 
