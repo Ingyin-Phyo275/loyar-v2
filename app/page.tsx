@@ -1,28 +1,7 @@
 "use client";
-
-import { motion } from "framer-motion";
-import {
-  Car,
-  Plane,
-  Users,
-  Shield,
-  Clock,
-  Star,
-  ArrowRight,
-  CheckCircle,
-  Quote,
-  FileText,
-  Lock,
-  Phone,
-  Mail,
-  MapPin,
-} from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
-import { SectionWrapper, FadeInWhenVisible } from "@/components/page-wrapper";
-import { TypewriterEffect } from "@/components/ui/typewriter-efffect";
+import { SectionWrapper } from "@/components/page-wrapper";
 import About from "@/components/section/about";
 import Stats from "@/components/section/stats";
 import Contact from "@/components/section/contact";
@@ -60,6 +39,10 @@ export default function HomePage() {
       <SectionWrapper className="py-20 lg:py-28 bg-secondary" id="services">
         <Service />
       </SectionWrapper>
+
+      {/* <SectionWrapper className=" bg-background" id="guide">
+        <TimelineDemo />
+      </SectionWrapper> */}
 
       {/* Blog Section */}
       <SectionWrapper className="py-20 lg:py-28 bg-background" id="blog">

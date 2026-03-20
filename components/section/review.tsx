@@ -74,7 +74,7 @@ export default function Reviews() {
       {/* Rider Reviews */}
       <div className="mb-16">
         <h3 className="text-2xl font-bold text-foreground mb-8 text-center">
-          Rider Reviews
+          Users Reviews
         </h3>
         {/* <div className="grid md:grid-cols-3 gap-6">
           {riderReviews.map((review, index) => (
