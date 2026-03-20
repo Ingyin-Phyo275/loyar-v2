@@ -56,21 +56,21 @@ export default function About() {
       </div>
 
       {/* Team */}
-      <div className="text-center mb-12">
+      {/* <div className="text-center mb-12">
         <h3 className="text-2xl font-bold text-foreground mb-4">
           Meet Our Team
         </h3>
         <p className="text-muted-foreground">
           The dedicated people behind Loyar Taxi
         </p>
-      </div>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+      </div> */}
+      {/* <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
         {teamMembers.map((member, index) => (
           <FadeInWhenVisible key={member.name} delay={index * 0.1}>
             <MemberCard {...member} />
           </FadeInWhenVisible>
         ))}
-      </div>
+      </div> */}
     </div>
   );
 }
