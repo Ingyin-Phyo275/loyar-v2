@@ -1,6 +1,6 @@
-"use client"
+'use client'
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Image from "next/image"
 import { motion, AnimatePresence } from "framer-motion"
 import { Menu, X } from "lucide-react"
@@ -17,6 +17,7 @@ const navLinks = [
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
+  const [activeSection, setActiveSection] = useState("#home")
 
   const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault()
@@ -26,6 +27,25 @@ export function Navbar() {
     }
     setIsOpen(false)
   }
+
+  // IntersectionObserver to detect current section
+  useEffect(() => {
+    const sections = navLinks.map(link => document.querySelector(link.href))
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            setActiveSection(`#${entry.target.id}`)
+          }
+        })
+      },
+      { rootMargin: "-50% 0px -50% 0px", threshold: 0 }
+    )
+    sections.forEach(section => section && observer.observe(section))
+    return () => {
+      sections.forEach(section => section && observer.unobserve(section))
+    }
+  }, [])
 
   return (
     <motion.header
@@ -63,7 +83,11 @@ export function Navbar() {
                 key={link.href}
                 href={link.href}
                 onClick={(e) => scrollToSection(e, link.href)}
-                className="text-muted-foreground hover:text-primary transition-colors font-medium cursor-pointer"
+                className={`transition-colors font-medium cursor-pointer py-1 ${
+                  activeSection === link.href
+                    ? "text-primary border-b-2 border-primary"
+                    : "text-muted-foreground hover:text-primary"
+                }`}
               >
                 {link.label}
               </a>
@@ -104,7 +128,11 @@ export function Navbar() {
                   key={link.href}
                   href={link.href}
                   onClick={(e) => scrollToSection(e, link.href)}
-                  className="text-foreground hover:text-primary transition-colors py-2 font-medium cursor-pointer"
+                  className={`transition-colors font-medium cursor-pointer py-2 ${
+                    activeSection === link.href
+                      ? "text-primary font-semibold"
+                      : "text-foreground hover:text-primary"
+                  }`}
                 >
                   {link.label}
                 </a>
