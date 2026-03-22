@@ -38,13 +38,13 @@ export default function Hero() {
   ];
 
   return (
-    <section className="relative w-full min-h-screen flex items-center justify-center px-6 md:px-10 overflow-hidden bg-gradient-to-br from-background via-secondary/40 to-background">
+    <section className="relative w-full min-h-screen flex items-center justify-center px-6 md:px-10 overflow-hidden bg-linear-to-br from-background via-secondary/40 to-background">
       {/* Background Glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-primary/20 blur-[120px] rounded-full" />
 
       <Spotlight />
 
-      <div className="grid grid-cols-1 md:grid-cols-[1fr_340px] gap-10 max-w-7xl w-full z-10">
+      <div className="grid grid-cols-1 gap-10 max-w-7xl w-full z-10">
         {/* LEFT */}
         <motion.div
           initial={{ opacity: 0, x: -40 }}
@@ -61,13 +61,12 @@ export default function Hero() {
           <TypewriterEffect words={words} />
 
           {/* Description */}
-          <p className="mt-4 text-lg text-muted-foreground max-w-xl leading-relaxed">
-            Book your ride in seconds. Enjoy safe, reliable, and affordable
-            journeys with professional drivers anytime, anywhere.
+          <p className="mt-4 text-base md:text-md  text-muted-foreground max-w-xl leading-relaxed">
+            Safe. Reliable. Transparent. Your trusted ride partner in Myanmar.
           </p>
 
           {/* Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 mt-8">
+          <div className="flex flex-col max-w-sm:flex-row gap-4 mt-8">
             <Button
               size="lg"
               className="group bg-primary text-white hover:scale-105 transition-all shadow-lg shadow-primary/30"
@@ -107,38 +106,7 @@ export default function Hero() {
         </motion.div>
 
         {/* RIGHT */}
-        <motion.div
-          initial={{ opacity: 0, x: 40 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.7 }}
-          className="w-[340px]"
-        >
-          <div className="flex flex-col gap-5">
-            {taxiTypes.map((taxi, index) => (
-              <motion.div
-                key={taxi.name}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.15 }}
-                className="group relative rounded-2xl p-5 border border-white/10 backdrop-blur-xl bg-white/5  transition-all duration-300 shadow-lg"
-              >
-                {/* Glow on hover */}
-                <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 bg-primary/20 blur-xl transition" />
 
-                <div className="relative flex items-center gap-4">
-                  <div className="p-2 rounded-lg bg-primary/10 group-hover:bg-primary transition-colors duration-300">
-                    <taxi.icon className="w-5 h-5 group-hover:text-white transition-colors duration-300" />
-                  </div>
-
-                  <div>
-                    <h3 className="font-semibold text-lg">{taxi.name}</h3>
-                    <p className="text-xs opacity-80">{taxi.description}</p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
       </div>
     </section>
   );
