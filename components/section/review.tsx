@@ -1,8 +1,9 @@
-import React from "react";
+"use client";
 import { FadeInWhenVisible } from "../page-wrapper";
 import { Card, CardContent } from "../ui/card";
 import { Quote, Star } from "lucide-react";
 import { Marquee } from "../ui/marquee";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 export default function Reviews() {
   const riderReviews = [
@@ -53,9 +54,15 @@ export default function Reviews() {
     },
   ];
 
+  // user reviews
   const firstRow = riderReviews.slice(0, riderReviews.length);
   const secondRow = riderReviews.slice(riderReviews.length / 2);
 
+  // driver reviews
+  const firstRowDriver = driverReviews.slice(0, driverReviews.length);
+  const secondRowDriver = driverReviews.slice(driverReviews.length / 2);
+
+  const mobile = useIsMobile();
   return (
     <div className="container mx-auto px-4 lg:px-8">
       <div className="text-center max-w-2xl mx-auto mb-16">
@@ -76,38 +83,57 @@ export default function Reviews() {
         <h3 className="text-2xl font-bold text-foreground mb-8 text-center">
           Users Reviews
         </h3>
-        {/* <div className="grid md:grid-cols-3 gap-6">
-          {riderReviews.map((review, index) => (
-            <ReviewCard index={index} review={review} key={index} />
-          ))}
-        </div> */}
-
-        <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
-          <Marquee pauseOnHover className="[--duration:20s]">
-            {firstRow.map((review, index) => (
+        {mobile ? (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {riderReviews.map((review, index) => (
               <ReviewCard index={index} review={review} key={index} />
             ))}
-          </Marquee>
-          <Marquee reverse pauseOnHover className="[--duration:20s]">
-            {secondRow.map((review, index) => (
-              <ReviewCard index={index} review={review} key={index} />
-            ))}
-          </Marquee>
-          <div className="from-background pointer-events-none absolute inset-y-0 left-0 w-1/4 "></div>
-          <div className="from-background pointer-events-none absolute inset-y-0 right-0 w-1/4 "></div>
-        </div>
+          </div>
+        ) : (
+          <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
+            <Marquee pauseOnHover className="[--duration:20s]">
+              {firstRow.map((review, index) => (
+                <ReviewCard index={index} review={review} key={index} />
+              ))}
+            </Marquee>
+            <Marquee reverse pauseOnHover className="[--duration:20s]">
+              {secondRow.map((review, index) => (
+                <ReviewCard index={index} review={review} key={index} />
+              ))}
+            </Marquee>
+            <div className="from-background pointer-events-none absolute inset-y-0 left-0 w-1/4 "></div>
+            <div className="from-background pointer-events-none absolute inset-y-0 right-0 w-1/4 "></div>
+          </div>
+        )}
       </div>
-
+        
       {/* Driver Reviews */}
       <div>
         <h3 className="text-2xl font-bold text-foreground mb-8 text-center">
           Driver Reviews
         </h3>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {driverReviews.map((review, index) => (
-            <ReviewCard index={index} review={review} key={index} />
-          ))}
-        </div>
+        {mobile ? (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {driverReviews.map((review, index) => (
+              <ReviewCard index={index} review={review} key={index} />
+            ))}
+          </div>
+        ) : (
+          <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
+            <Marquee pauseOnHover className="[--duration:20s]">
+              {firstRowDriver.map((review, index) => (
+                <ReviewCard index={index} review={review} key={index} />
+              ))}
+            </Marquee>
+            <Marquee reverse pauseOnHover className="[--duration:20s]">
+              {secondRowDriver.map((review, index) => (
+                <ReviewCard index={index} review={review} key={index} />
+              ))}
+            </Marquee>
+            <div className="from-background pointer-events-none absolute inset-y-0 left-0 w-1/4 "></div>
+            <div className="from-background pointer-events-none absolute inset-y-0 right-0 w-1/4 "></div>
+          </div>
+        )}
       </div>
     </div>
   );
