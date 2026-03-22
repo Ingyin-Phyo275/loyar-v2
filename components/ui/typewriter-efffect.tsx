@@ -1,8 +1,6 @@
 "use client";
-
 import { cn } from "@/lib/utils";
 import { motion, stagger, useAnimate, useInView } from "framer-motion";
-import { Car } from "lucide-react";
 import { useEffect } from "react";
 
 export const TypewriterEffect = ({
@@ -45,6 +43,53 @@ export const TypewriterEffect = ({
     }
   }, [isInView]);
 
+
+//   useEffect(() => {
+//   if (!isInView) return;
+
+//   const totalChars = wordsArray.reduce(
+//     (acc, word) => acc + word.text.length,
+//     0
+//   );
+
+//   const totalDuration = 3; // total typing time
+//   const staggerDelay = totalDuration / totalChars;
+
+//   let isMounted = true;
+
+//   const runAnimation = async () => {
+//     while (isMounted) {
+//       // Step 1: Reset (hide all chars)
+//       await animate("span", {
+//         opacity: 0,
+//         display: "none",
+//       });
+
+//       // Step 2: Type animation
+//       await animate(
+//         "span",
+//         {
+//           opacity: 1,
+//           display: "inline-block",
+//         },
+//         {
+//           duration: 0.2,
+//           delay: stagger(staggerDelay),
+//           ease: "easeInOut",
+//         }
+//       );
+
+//       // Step 3: Wait before restarting
+//       await new Promise((resolve) => setTimeout(resolve, 1000));
+//     }
+//   };
+
+//   runAnimation();
+
+//   return () => {
+//     isMounted = false;
+//   };
+// }, [isInView]);
   const renderWords = () => {
     return (
       <motion.div ref={scope} className="inline">
@@ -91,7 +136,7 @@ export const TypewriterEffect = ({
           repeatType: "reverse",
         }}
         className={cn(
-          "inline-block rounded-sm w-[4px] h-4 md:h-6 lg:h-10 bg-primary",
+          "inline-block rounded-sm w-1 h-4 md:h-6 lg:h-10 bg-primary",
           cursorClassName
         )}
       >
