@@ -5,9 +5,11 @@ import {
   Car,
   CheckCircle,
   Clock,
+  Pizza,
   Plane,
   Shield,
   Star,
+  Truck,
   Users,
 } from "lucide-react";
 import { motion } from "framer-motion";
@@ -21,13 +23,13 @@ export default function Service() {
         "Premium ride service for business professionals. Luxury vehicles with professional drivers for your important meetings.",
     },
     {
-      icon: Users,
+      icon: Pizza,
       title: "Loyar Sar",
       description:
         "Affordable shared rides for daily commuters. Split the fare and make new friends on your journey.",
     },
     {
-      icon: Car,
+      icon: Truck,
       title: "Loyar Poh",
       description:
         "Family-friendly rides with spacious vehicles. Child seats available and extra luggage space for family trips.",
