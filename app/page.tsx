@@ -11,10 +11,8 @@ import Reviews from "@/components/section/review";
 import Blog from "@/components/section/blog";
 import Service from "@/components/section/service";
 import Hero from "@/components/section/hero";
-import { getUsers } from "@/server/actions/testActions";
+
 export default async function HomePage() {
-  const users = await getUsers();
-  console.log("users", users)
   return (
     <main className="min-h-screen">
 
