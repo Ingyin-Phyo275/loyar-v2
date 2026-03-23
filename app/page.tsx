@@ -12,12 +12,12 @@ import Legal from "@/components/section/legal";     // Server component
 import BookingClient from "@/components/section/booking"; // Client component
 import ContactClient from "@/components/section/contact"; // Client component
 
-export const metadata = {
-  title: "Loyar Myanmar",
-  description:
-    "Book reliable taxi services in Myanmar with Loyar Taxi. Loyar Thwar, Loyar Sar, Loyar Poh, and Airport Checkin rides.",
-  keywords: "Myanmar taxi, Loyar Taxi, airport transfer, safe transport",
-};
+// export const metadata = {
+//   title: "Loyar Myanmar",
+//   description:
+//     "Book reliable taxi services in Myanmar with Loyar Taxi. Loyar Thwar, Loyar Sar, Loyar Poh, and Airport Checkin rides.",
+//   keywords: "Myanmar taxi, Loyar Taxi, airport transfer, safe transport",
+// };
 
 export default async function HomePage() {
   return (
