@@ -14,6 +14,23 @@ export const metadata: Metadata = {
   title: 'Loyar Myanmar',
   description: 'Loyar Taxi offers reliable, affordable, and safe transportation services. Book Loyar Thwar, Loyar Sar, Loyar Poh, and Airport Checkin rides with ease.',
   keywords: 'taxi, ride, transportation, Loyar, airport transfer, Myanmar taxi',
+  icons: {
+    icon: [
+      {
+        url: '/images/loyar_logo.png',
+        media: '(prefers-color-scheme: light)',
+      },
+      {
+        url: '/images/loyar_logo.png',
+        media: '(prefers-color-scheme: dark)',
+      },
+      {
+        url: '/images/loyar_logo.png',
+        type: 'image/svg+xml',
+      },
+    ],
+    apple: '/apple-icon.png',
+  },
 }
 
 export default function RootLayout({

@@ -1,6 +1,6 @@
 "use client";
 import { Button } from "../ui/button";
-
+import { FaAndroid, FaApple, FaGooglePlay } from "react-icons/fa";
 export default function Booking() {
   return (
     <div className="container mx-auto px-4 lg:px-8 text-center">
@@ -15,16 +15,16 @@ export default function Booking() {
         <Button
           size="lg"
           variant="secondary"
-          className="bg-background text-foreground hover:bg-background/90"
+          className="cursor-pointer bg-background text-foreground hover:bg-background/90"
         >
-          Download App
+          <FaApple /> Download
         </Button>
-        <Button
+         <Button
           size="lg"
-          variant="outline"
-          className="border-primary-foreground text-primary hover:bg-primary hover:text-primary-foreground"
+          variant="secondary"
+          className="cursor-pointer bg-background text-foreground hover:bg-background/90"
         >
-          Book Online
+          <FaGooglePlay /> Download
         </Button>
       </div>
     </div>

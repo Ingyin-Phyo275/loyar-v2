@@ -52,6 +52,7 @@ export default function Reviews() {
         "Loyar takes care of their drivers. Insurance, training, and good pay.",
       experience: "4 years",
     },
+    
   ];
 
   // user reviews
@@ -85,7 +86,7 @@ export default function Reviews() {
         </h3>
         {mobile ? (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {riderReviews.map((review, index) => (
+            {riderReviews.slice(0, 3).map((review, index) => (
               <ReviewCard index={index} review={review} key={index} />
             ))}
           </div>
@@ -114,7 +115,7 @@ export default function Reviews() {
         </h3>
         {mobile ? (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {driverReviews.map((review, index) => (
+            {driverReviews.slice(0, 3).map((review, index) => (
               <ReviewCard index={index} review={review} key={index} />
             ))}
           </div>
