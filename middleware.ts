@@ -5,7 +5,7 @@ export function middleware(request: NextRequest) {
   const url = request.nextUrl.clone();
 
   const isPrivateRoute =
-    url.pathname === "/payment" || url.pathname === "/kbz-pwa";
+    url.pathname === "/payment" || url.pathname === "/kbz-pwa" || url.pathname === "/test";
 
   if (!isPrivateRoute) return NextResponse.next();
 
@@ -21,5 +21,5 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/payment", "/kbz-pwa"],
+  matcher: ["/payment", "/kbz-pwa", "/test"],
 };
