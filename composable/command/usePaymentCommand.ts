@@ -1,5 +1,6 @@
 import { createPayment } from "@/http/apis/paymentApi";
 import { useMutation } from "@tanstack/react-query"
+import { toast } from "sonner";
 
 interface PaymentProps {
   tradeType: string;
@@ -18,7 +19,8 @@ export const usePaymentCommand = () => {
             console.log("data in query", response?.data)
         },
         onSuccess: () => {
-            window.location.href = "/payment-success";
+            // window.location.href = "/payment-success";
+            toast.success("payment success")
         },
     })
     return {

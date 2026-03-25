@@ -22,8 +22,9 @@ export default function PurchaseButton({ decrypted }: PurchaseButtonProps) {
   
   const { paymentMutation, isLoading, isError } = usePaymentCommand();
   const handlePurchase = async () => {
-    await paymentMutation(decrypted);
-    router.push("/payment-success");
+    const res =await paymentMutation(decrypted);
+    console.log("payment response", res)
+    // router.push("/payment-success");
   };
 
   return (

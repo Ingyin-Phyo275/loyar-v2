@@ -9,7 +9,6 @@ const paymentData = {
   paymentType: "Card",
   userType: "Regular",
   userId: "user123",
-  paymentMethodId: "pm_456"
 };
 
 const jsonData = JSON.stringify(paymentData);
