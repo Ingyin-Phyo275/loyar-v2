@@ -19,6 +19,7 @@ interface PurchaseButtonProps {
 
 export default function PurchaseButton({ decrypted }: PurchaseButtonProps) {
   const router = useRouter();
+  
   const { paymentMutation, isLoading, isError } = usePaymentCommand();
   const handlePurchase = async () => {
     await paymentMutation(decrypted);

@@ -2,14 +2,7 @@
 import { decryptData } from "@/lib/crypto";
 import { useSearchParams } from "next/navigation";
 
-interface PageProps {
-  searchParams: {
-    data?: string;
-    iv?: string;
-  };
-}
-
-export default function PaymentPage({ searchParams }: PageProps) {
+export default function PaymentPage() {
 //   const { data, iv } = searchParams;
     const params = useSearchParams();
     const data = params.get("data");

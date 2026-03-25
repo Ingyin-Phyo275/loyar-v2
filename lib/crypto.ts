@@ -3,16 +3,16 @@ import crypto from "crypto";
 
 // Must be 32 bytes for AES-256
 // const SECRET_KEY = Buffer.from("12345678901234567890123456789012");
-if (!process.env.NEXT_PUBLIC_SECRET_KEY) {
+if (!process.env.NEXT_SECRET_KEY) {
   throw new Error("NEXT_SECRET_KEY is missing");
 }
 
-const SECRET_KEY = Buffer.from(process.env.NEXT_PUBLIC_SECRET_KEY!, "utf8");
+const SECRET_KEY = Buffer.from(process.env.NEXT_SECRET_KEY!, "utf8");
 if (SECRET_KEY.length !== 32) {
   throw new Error(`Invalid key length: ${SECRET_KEY.length}`);
 }
 
-console.log("secret key from env", process.env.NEXT_PUBLIC_SECRET_KEY)
+console.log("secret key from env", process.env.NEXT_SECRET_KEY)
 console.log("key length", SECRET_KEY.length)
 export function decryptData(encryptedBase64: string, ivBase64: string): string {
   // Convert Base64 strings to buffers

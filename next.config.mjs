@@ -6,6 +6,9 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  env: {
+    NEXT_SECRET_KEY : process.env.NEXT_SECRET_KEY
+  }
 }
 
 export default nextConfig
