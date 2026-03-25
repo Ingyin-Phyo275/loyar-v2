@@ -3,7 +3,7 @@
 import Link from "next/link"
 import Image from "next/image"
 import { motion } from "framer-motion"
-import { Facebook, Instagram, Twitter, Mail, Phone, MapPin } from "lucide-react"
+import { Facebook, Instagram, Twitter, Mail, Phone, MapPin, Youtube } from "lucide-react"
 
 const footerLinks = {
   services: [
@@ -25,9 +25,9 @@ const footerLinks = {
 }
 
 const socialLinks = [
-  { href: "#", icon: Facebook, label: "Facebook" },
+  { href: "https://www.facebook.com/LoyarMM", icon: Facebook, label: "Facebook" },
   { href: "#", icon: Instagram, label: "Instagram" },
-  { href: "#", icon: Twitter, label: "TikTok" },
+  { href: "https://www.youtube.com/@LOYARMYANMAR", icon: Youtube, label: "YouTube" },
 ]
 
 export function Footer() {
@@ -62,6 +62,8 @@ export function Footer() {
                 <a
                   key={social.label}
                   href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-10 h-10 rounded-full bg-background/10 flex items-center justify-center hover:bg-primary transition-colors"
                   aria-label={social.label}
                 >
@@ -122,19 +124,19 @@ export function Footer() {
               <li className="flex items-start gap-3">
                 <MapPin size={18} className="text-primary mt-0.5 shrink-0" />
                 <span className="text-background/70 text-sm">
-                  123 Main Street, Yangon, Myanmar
+                  No.A3, Kabar Aye Villa, Mayangone Township, Yangon, Myanmar
                 </span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone size={18} className="text-primary shrink-0" />
                 <a href="tel:+959123456789" className="text-background/70 hover:text-primary transition-colors text-sm">
-                  +95 9 123 456 789
+                  +95 9 966 533338
                 </a>
               </li>
               <li className="flex items-center gap-3">
                 <Mail size={18} className="text-primary shrink-0" />
-                <a href="mailto:info@loyartaxi.com" className="text-background/70 hover:text-primary transition-colors text-sm">
-                  info@loyartaxi.com
+                <a href="mailto:support@loyarmyanmar.com" className="text-background/70 hover:text-primary transition-colors text-sm">
+                   support@loyarmyanmar.com
                 </a>
               </li>
             </ul>

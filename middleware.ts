@@ -1,22 +1,25 @@
-import { NextResponse } from 'next/server';
+import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
 
-export function middleware(request : any) {
+export function middleware(request: NextRequest) {
   const url = request.nextUrl.clone();
 
-  const isPrivateRoute = url.pathname === '/payment-success' || url.pathname === '/kbz-pwa';
+  const isPrivateRoute =
+    url.pathname === "/payment" || url.pathname === "/kbz-pwa";
+
   if (!isPrivateRoute) return NextResponse.next();
 
-  const key = url.searchParams.get('key');
+  const data = url.searchParams.get("data");
+  const iv = url.searchParams.get("iv");
 
-  if (key !== process.env.NEXT_PUBLIC_PRIVATE_KEY) {
-    // Redirect to home and clear query params
-    const redirectUrl = new URL('/', request.url); // '/' + current origin
-    return NextResponse.redirect(redirectUrl);
+  // redirect if missing
+  if (!data || !iv) {
+    return NextResponse.redirect(new URL("/", request.url));
   }
 
   return NextResponse.next();
 }
 
 export const config = {
-  matcher: ['/payment-success', '/kbz-pwa'],
+  matcher: ["/payment", "/kbz-pwa"],
 };
