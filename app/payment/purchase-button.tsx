@@ -24,7 +24,8 @@ export default function PurchaseButton({ decrypted }: PurchaseButtonProps) {
   const handlePurchase = async () => {
     const res =await paymentMutation(decrypted);
     // window.location.href = res;
-    window.open(res, "_blank");
+    // window.open(res, "_blank");
+    window.location.href = res;
     // console.log("payment response", res)
     // router.push("/payment-success");
   };

@@ -6,7 +6,7 @@ import TanstackProvider from '@/provider/TanStackProvider'
 import { Toaster } from '@/components/ui/sonner'
 import { Suspense } from 'react'
 
-const inter = Inter({ 
+const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter'
 })
@@ -44,9 +44,8 @@ export default function RootLayout({
       <body className="font-sans antialiased" suppressHydrationWarning>
         <TanstackProvider>
           <Suspense>
-               {children}
-
-</Suspense>
+            {children}
+          </Suspense>
           <Toaster richColors position='bottom-right' />
         </TanstackProvider>
         <Analytics />
