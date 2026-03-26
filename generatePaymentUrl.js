@@ -4,12 +4,13 @@ import crypto from "crypto";
 const SECRET_KEY = Buffer.from("12345678901234567890123456789012"); // 32 bytes
 
 const paymentData = {
-  tradeType: "Buy",
-  amount: 100,
-  paymentType: "Card",
-  userType: "Regular",
-  userId: "user123",
-};
+    "tradeType" : "PWAAPP",
+    "amount" : 2000,
+    "paymentType": "TOPUP",
+    "userType" : "DRIVER",
+    "userId": "test"
+    // "paymentMethodId": "c1a9f7e2-5b3d-4c8a-9f12-8e7a6b5c4d3e"
+}
 
 const jsonData = JSON.stringify(paymentData);
 

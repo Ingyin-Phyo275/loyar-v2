@@ -16,7 +16,8 @@ export const usePaymentCommand = () => {
         mutationKey: ["payment"],
         mutationFn: async (paymentData: PaymentProps) => {
             const response = await createPayment(paymentData);
-            console.log("data in query", response?.data)
+            return response?.redirectUrl
+            // console.log("data in query", response?.redirectUrl)
         },
         onSuccess: () => {
             // window.location.href = "/payment-success";
