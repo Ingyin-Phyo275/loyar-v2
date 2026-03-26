@@ -8,8 +8,8 @@ const paymentData = {
     "amount" : 2000,
     "paymentType": "TOPUP",
     "userType" : "DRIVER",
-    "userId": "test"
-    // "paymentMethodId": "c1a9f7e2-5b3d-4c8a-9f12-8e7a6b5c4d3e"
+    "userId": "6d4f286e-3caf-46b5-a065-d1a75c3d8cf2",
+    "paymentMethodId": "ee7568ef-581d-43e7-8409-a5cd8d6a653a"
 }
 
 const jsonData = JSON.stringify(paymentData);
