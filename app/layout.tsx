@@ -4,6 +4,7 @@ import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 import TanstackProvider from '@/provider/TanStackProvider'
 import { Toaster } from '@/components/ui/sonner'
+import { Suspense } from 'react'
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -42,7 +43,10 @@ export default function RootLayout({
     <html lang="en" className={inter.variable}>
       <body className="font-sans antialiased" suppressHydrationWarning>
         <TanstackProvider>
-          {children}
+          <Suspense>
+               {children}
+
+</Suspense>
           <Toaster richColors position='bottom-right' />
         </TanstackProvider>
         <Analytics />

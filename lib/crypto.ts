@@ -1,4 +1,4 @@
-// /lib/crypto.ts
+"use client"
 import crypto from "crypto";
 
 // Must be 32 bytes for AES-256
