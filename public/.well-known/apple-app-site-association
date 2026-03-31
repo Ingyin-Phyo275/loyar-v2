@@ -1,0 +1,11 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "3GCM4J964V.com.mtg.loyarTwarDriver.uat", 
+        "paths": ["*"]  
+      }
+    ]
+  }
+}

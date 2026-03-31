@@ -1,0 +1,10 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "com.mtg.loyar_twar_driver.uat",
+    "sha256_cert_fingerprints": [
+      "A9:36:21:11:6A:84:A5:C4:18:F3:B7:C3:43:58:50:5D:AD:07:FD:6E:F5:76:4C:AB:E6:12:72:B8:86:9B:48:A6"
+    ]
+  }
+}]
