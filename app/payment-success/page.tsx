@@ -1,5 +1,6 @@
 import { CircleCheckBig } from "lucide-react";
 import { Button } from "../../components/ui/button";
+import Link from "next/link";
 
 export default function page() {
   return (
@@ -22,13 +23,11 @@ export default function page() {
 
         {/* ACTIONS */}
         <div className="flex gap-3">
-          <Button
-            variant="outline"
-            className="w-full cursor-pointer"
-
-          >
-            Back to App
-          </Button>
+          <Link href="/home" className="w-full">
+            <Button variant="outline" className="w-full cursor-pointer">
+              Back to App
+            </Button>
+          </Link>
         </div>
       </div>
     </div>
