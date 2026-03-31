@@ -1,8 +1,7 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import { usePaymentCommand } from "@/composable/command/usePaymentCommand";
-import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 interface PaymentProps {
   tradeType: string;
@@ -18,32 +17,24 @@ interface PurchaseButtonProps {
 }
 
 export default function PurchaseButton({ decrypted }: PurchaseButtonProps) {
-  const router = useRouter();
-  
   const { paymentMutation, isLoading, isError } = usePaymentCommand();
-  const handlePurchase = async () => {
-    const res =await paymentMutation(decrypted);
-    window.location.href = res;
 
-  };
+  useEffect(() => {
+    const callPayment = async () => {
+      const res = await paymentMutation(decrypted);
+      window.location.href = res;
+    };
+
+    callPayment();
+  }, []);
+
+  if (isError) {
+    return <p className="text-red-500 text-sm mt-2">{isError}</p>;
+  }
 
   return (
-    <div className="grid grid-cols-2 gap-4 w-full">
-      <Button
-        variant={"outline"}
-        onClick={() => router.push("/")}
-        className="cursor-pointer"
-      >
-        Cancel
-      </Button>
-      <Button
-        onClick={handlePurchase}
-        disabled={isLoading}
-        className="cursor-pointer"
-      >
-        {isLoading ? "Processing..." : "Purchase"}
-      </Button>
-      {isError && <p className="text-red-500 text-sm mt-2">{isError}</p>}
-    </div>
+    <p className="text-center text-lg font-medium mt-5">
+      {isLoading ? "Processing payment..." : "Redirecting..."}
+    </p>
   );
 }

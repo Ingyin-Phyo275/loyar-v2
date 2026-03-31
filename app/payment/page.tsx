@@ -49,9 +49,6 @@ export default function PaymentPage() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-linear-to-br from-pink-50 via-purple-50 to-blue-50 px-4">
       <div className="bg-white shadow-xl rounded-2xl p-8 max-w-md w-full">
-        {/* <p>Encrypted Data (first 20 chars): {data?.slice(0, 20)}</p>
-        <p>IV: {iv}</p>
-        <p>Payment Object: {JSON.stringify(decrypted)}</p> */}
 
         <div className="flex flex-col items-center">
           <Image
@@ -60,35 +57,6 @@ export default function PaymentPage() {
             width={120}
             height={120}
           />
-          <h2 className="mt-4 text-2xl font-bold text-gray-800">Payment Details</h2>
-        </div>
-
-        {/* Example: show individual fields */}
-        <div className="mt-6 space-y-3">
-          <div className="flex justify-between">
-            <span className="font-medium text-gray-600">Trade Type:</span>
-            <span className="text-gray-800">{decrypted.tradeType}</span>
-          </div>
-          <div className="flex justify-between">
-            <span className="font-medium text-gray-600">Amount:</span>
-            <span className="text-gray-800">${decrypted.amount}</span>
-          </div>
-          <div className="flex justify-between">
-            <span className="font-medium text-gray-600">Payment Type:</span>
-            <span className="text-gray-800">{decrypted.paymentType}</span>
-          </div>
-          <div className="flex justify-between">
-            <span className="font-medium text-gray-600">User Type:</span>
-            <span className="text-gray-800">{decrypted.userType}</span>
-          </div>
-          <div className="flex justify-between">
-            <span className="font-medium text-gray-600">User ID:</span>
-            <span className="text-gray-800">{decrypted.userId}</span>
-          </div>
-          <div className="flex justify-between">
-            <span className="font-medium text-gray-600">Payment Method:</span>
-            <span className="text-gray-800">{decrypted.paymentMethodId}</span>
-          </div>
           <PurchaseButton decrypted={decrypted} />
         </div>
       </div>
