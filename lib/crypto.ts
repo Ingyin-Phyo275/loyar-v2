@@ -2,18 +2,22 @@
 import crypto from "crypto";
 
 // Must be 32 bytes for AES-256
-// const SECRET_KEY = Buffer.from("12345678901234567890123456789012");
-if (!process.env.NEXT_SECRET_KEY) {
-  throw new Error("NEXT_SECRET_KEY is missing");
-}
+let SECRET_KEY: Buffer | null = null;
 
-const SECRET_KEY = Buffer.from(process.env.NEXT_SECRET_KEY!, "utf8");
-if (SECRET_KEY.length !== 32) {
-  throw new Error(`Invalid key length: ${SECRET_KEY.length}`);
-}
+function getSecretKey(): Buffer {
+  if (SECRET_KEY) return SECRET_KEY;
 
-console.log("secret key from env", process.env.NEXT_SECRET_KEY)
-console.log("key length", SECRET_KEY.length)
+  if (!process.env.NEXT_SECRET_KEY) {
+    throw new Error("NEXT_SECRET_KEY is missing");
+  }
+
+  SECRET_KEY = Buffer.from(process.env.NEXT_SECRET_KEY, "utf8");
+  if (SECRET_KEY.length !== 32) {
+    throw new Error(`Invalid key length: ${SECRET_KEY.length}`);
+  }
+
+  return SECRET_KEY;
+}
 export function decryptData(encryptedBase64: string, ivBase64: string): string {
   // Convert Base64 strings to buffers
   const encryptedBuffer = Buffer.from(encryptedBase64, "base64");
@@ -23,7 +27,7 @@ export function decryptData(encryptedBase64: string, ivBase64: string): string {
   const authTag = encryptedBuffer.slice(-16);
   const ciphertext = encryptedBuffer.slice(0, -16);
 
-  const decipher = crypto.createDecipheriv("aes-256-gcm", SECRET_KEY, iv);
+  const decipher = crypto.createDecipheriv("aes-256-gcm", getSecretKey(), iv);
   decipher.setAuthTag(authTag);
 
   let decrypted = decipher.update(ciphertext);
@@ -39,7 +43,7 @@ export function encryptData(obj: any): { data: string; iv: string } {
   const jsonData = JSON.stringify(obj);
   const iv = crypto.randomBytes(12);
 
-  const cipher = crypto.createCipheriv("aes-256-gcm", SECRET_KEY, iv);
+  const cipher = crypto.createCipheriv("aes-256-gcm", getSecretKey(), iv);
   let encrypted = cipher.update(jsonData, "utf8");
   encrypted = Buffer.concat([encrypted, cipher.final()]);
 
