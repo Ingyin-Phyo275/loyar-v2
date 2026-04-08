@@ -15,7 +15,7 @@ export default function page() {
 
   const isSuccess =
     verifyPayment?.data?.payment?.status?.toLowerCase() === 'success' &&
-    verifyPayment?.data?.transaction?.status?.toLowerCase() === 'success'
+    (verifyPayment?.data?.transaction?.status?.toLowerCase() === 'success' || verifyPayment?.data?.transaction?.paymentStatus?.toLowerCase() === 'success')
 
   if (isLoading) {
     return (
