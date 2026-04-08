@@ -1,16 +1,8 @@
 "use client";
 
 import { usePaymentCommand } from "@/composable/command/usePaymentCommand";
+import { PaymentProps } from "@/types/payment";
 import { useEffect } from "react";
-
-interface PaymentProps {
-  tradeType: string;
-  amount: number;
-  paymentType: string;
-  userType: string;
-  userId: string;
-  paymentMethodId: string;
-}
 
 interface PurchaseButtonProps {
   decrypted: PaymentProps;

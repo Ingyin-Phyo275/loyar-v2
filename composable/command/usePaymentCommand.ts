@@ -1,14 +1,6 @@
 import { createPayment } from "@/http/apis/paymentApi";
+import { PaymentProps } from "@/types/payment";
 import { useMutation } from "@tanstack/react-query"
-
-interface PaymentProps {
-  tradeType: string;
-  amount: number;
-  paymentType: string;
-  userType: string;
-  userId: string;
-  paymentMethodId: string;
-}
 
 export const usePaymentCommand = () => {
     const paymentMutation = useMutation({

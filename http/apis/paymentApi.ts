@@ -1,14 +1,6 @@
 import { AxiosError } from "axios"
 import axiosInstance from "../httpClient"
-
-interface PaymentProps {
-    tradeType: string,
-    amount: number,
-    paymentType: string,
-    userType: string,
-    userId: string,
-    paymentMethodId: string
-}
+import { PaymentProps } from "@/types/payment"
 export const createPayment = async (data: PaymentProps) => {
     try {
         const response = await axiosInstance.post('/payment/create', data);

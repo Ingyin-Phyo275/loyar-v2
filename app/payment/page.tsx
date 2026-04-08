@@ -5,15 +5,7 @@ import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import { useMemo } from "react";
 import PurchaseButton from "./purchase-button";
-
-interface PaymentProps {
-  tradeType: string;
-  amount: number;
-  paymentType: string;
-  userType: string;
-  userId: string;
-  paymentMethodId: string;
-}
+import { PaymentProps } from "@/types/payment";
 
 type PaymentState = PaymentProps | { error: string } | null;
 
