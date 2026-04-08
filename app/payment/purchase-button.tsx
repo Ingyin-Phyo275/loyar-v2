@@ -15,7 +15,7 @@ export default function PurchaseButton({ decrypted }: PurchaseButtonProps) {
   useEffect(() => {
     const callPayment = async () => {
       const res = await paymentMutation(decrypted);
-      // window.location.href = res;
+      window.location.href = res;
     };
 
     callPayment();
