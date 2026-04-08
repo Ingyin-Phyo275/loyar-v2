@@ -63,11 +63,11 @@ export function Navbar() {
             className="flex items-center gap-2"
           >
             <Image
+              loading='eager'
               src="/images/loyar_logo.png"
               alt="Loyar Taxi Logo"
               width={60}
               height={60}
-              loading="eager"
               priority
             />
             {/* <span className="text-xl font-bold text-foreground">

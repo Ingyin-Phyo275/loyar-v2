@@ -23,6 +23,18 @@ export const createPayment = async (data: PaymentProps) => {
     }
 }
 
+export const verifyPaymentStatus = async (merchOrderId: string) => {
+    try {
+        const response = await axiosInstance.get(`/payment/check-payment-status/${merchOrderId}`);
+        return response?.data;
+    } catch (error) {
+        if (error instanceof AxiosError) {
+            throw new  Error(error.message || "API Error")
+        }
+        throw new Error("Something went wrong")
+    }
+}
+
 // const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL; // e.g. "http://localhost:8000"
 // export const createPayment = async (data: PaymentProps) => {
 //   try {

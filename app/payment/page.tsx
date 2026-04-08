@@ -52,6 +52,7 @@ export default function PaymentPage() {
 
         <div className="flex flex-col items-center">
           <Image
+            loading='eager'
             src="/images/loyar_logo.png"
             alt="Loyar Logo"
             width={120}
