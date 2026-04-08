@@ -25,6 +25,8 @@ jobs:
             else if (branch.startsWith('chore/')) labels.push('chore');
             else if (branch.startsWith('refactor/')) labels.push('refactor');
             else if (branch.startsWith('release/')) labels.push('release');
+            else if (branch.startsWith('developer_branches/')) labels.push('developer_branches');
+            else if (branch.startsWith('dev/')) labels.push('dev');
 
             if (labels.length > 0) {
               await github.rest.issues.addLabels({
