@@ -10,6 +10,8 @@ export const usePaymentCommand = () => {
             return response?.redirectUrl
             // console.log("data in query", response?.redirectUrl)
         },
+        retry: 2,
+        retryDelay: (attemptIndex) => Math.min(1000 * 2 ** attemptIndex, 30000),
         onSuccess: () => {
             // window.location.href = "/payment-success";
             // toast.success("payment success")
@@ -18,6 +20,7 @@ export const usePaymentCommand = () => {
     return {
         paymentMutation: paymentMutation.mutateAsync,
         isLoading: paymentMutation.isPending,
-        isError: paymentMutation.isError
+        isError: paymentMutation.isError,
+        error: paymentMutation.error
     }
 }
