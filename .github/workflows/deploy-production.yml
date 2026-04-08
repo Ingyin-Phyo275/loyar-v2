@@ -1,0 +1,84 @@
+name: Deploy to Production
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  ci:
+    name: Lint, Type Check & Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Type check
+        run: npx tsc --noEmit
+
+      - name: Build
+        run: npm run build
+
+  deploy:
+    name: Deploy to Production Server
+    runs-on: ubuntu-latest
+    needs: ci
+
+    steps:
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.PROD_SSH_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -H ${{ secrets.PROD_SSH_HOST }} >> ~/.ssh/known_hosts || echo "Warning: ssh-keyscan failed, but continuing..."
+
+      - name: Deploy via SSH
+        run: |
+          ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no \
+            ${{ secrets.PROD_SSH_USERNAME }}@${{ secrets.PROD_SSH_HOST }} << 'EOF'
+          sudo -i <<'ROOTEOF'
+          set -e
+
+          git config --global --add safe.directory /var/www/loyar-v2
+          cd /var/www/loyar-v2
+          git pull origin main
+
+          if [ -d "/root/.nvm" ]; then
+            export NVM_DIR="/root/.nvm"
+          elif [ -d "/home/ubuntu/.nvm" ]; then
+            export NVM_DIR="/home/ubuntu/.nvm"
+          fi
+
+          if [ -s "$NVM_DIR/nvm.sh" ]; then
+            . "$NVM_DIR/nvm.sh"
+          fi
+
+          npm ci
+          npm run build
+          pm2 restart loyar-v2
+          systemctl reload nginx || echo "Nginx reload skipped"
+
+          echo "Production deployment completed!"
+          ROOTEOF
+          EOF
+
+      - name: Cleanup
+        if: always()
+        run: rm -f ~/.ssh/deploy_key
+
+      - name: Notify
+        if: success()
+        run: echo "Deployed successfully to Production (${{ secrets.PROD_SSH_HOST }})"
