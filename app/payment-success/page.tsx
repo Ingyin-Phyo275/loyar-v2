@@ -2,16 +2,20 @@
 
 import { CircleCheckBig, CircleX, Loader2 } from "lucide-react";
 import { Button } from "../../components/ui/button";
-import Link from "next/link";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 import { useVerifyPaymentQuery } from "@/composable/query/useVerifyPaymentQuery";
 
 export default function page() {
 
+  const router = useRouter()
   const searchParams = useSearchParams()
   const merchOrderId = searchParams.get("merch_order_id") ?? ""
 
   const { verifyPayment, isError, isLoading, refetch } = useVerifyPaymentQuery(merchOrderId)
+
+  const redirectToHome = () => {
+    router.push(`/home?merchOrderId=${encodeURIComponent(merchOrderId)}`)
+  }
 
   const isSuccess =
     verifyPayment?.data?.payment?.status?.toLowerCase() === 'success' &&
@@ -77,11 +81,9 @@ export default function page() {
             <div className="border-t border-dashed border-gray-200" />
 
             {/* CTA */}
-            <Link href="/home" className="block">
-              <Button className="w-full bg-green-600 hover:bg-green-700 text-white cursor-pointer h-11 rounded-xl font-semibold">
-                Back to App
-              </Button>
-            </Link>
+            <Button onClick={redirectToHome} className="w-full bg-green-600 hover:bg-green-700 text-white cursor-pointer h-11 rounded-xl font-semibold">
+              Back to App
+            </Button>
           </div>
         </div>
       </div>
@@ -117,11 +119,9 @@ export default function page() {
             <Button onClick={() => refetch()} className="w-full bg-red-500 hover:bg-red-600 text-white cursor-pointer h-11 rounded-xl font-semibold">
               Try Again
             </Button>
-            <Link href="/home" className="block">
-              <Button variant="outline" className="w-full cursor-pointer h-11 rounded-xl font-semibold">
-                Back to App
-              </Button>
-            </Link>
+            <Button onClick={redirectToHome} variant="outline" className="w-full cursor-pointer h-11 rounded-xl font-semibold">
+              Back to App
+            </Button>
           </div>
         </div>
       </div>
