@@ -12,6 +12,25 @@ const paymentData = {
     "paymentMethodId": "ee7568ef-581d-43e7-8409-a5cd8d6a653a"
 }
 
+// const paymentData = {
+//     "tradeType" : "PWAAPP",
+//     "amount" : 2000,
+//     "paymentType": "BOOKING",
+//     "userType" : "USER",
+//     "userId": "5e39dfe3-e183-4154-96c9-9c201af850af",
+//     "paymentMethodId": "ee7568ef-581d-43e7-8409-a5cd8d6a653a",
+//     "paymentMethod" : "KBZ Pay",
+//     "tripData" : {
+//         "userId": "5e39dfe3-e183-4154-96c9-9c201af850af",
+//         "latitude": "16.885608063885872",
+//         "longitude": "96.13736200428403",
+//         "dropoffLatitude": "16.904836871018095",
+//         "dropoffLongitude": "96.13161159588017"
+//         // "distanceKm": "",
+//         // "promoCode": ""
+//     }
+// }
+
 const jsonData = JSON.stringify(paymentData);
 
 // Generate random IV

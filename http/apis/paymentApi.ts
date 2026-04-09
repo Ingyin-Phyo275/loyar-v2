@@ -4,12 +4,14 @@ import { PaymentProps } from "@/types/payment"
 export const createPayment = async (data: PaymentProps) => {
     try {
         const response = await axiosInstance.post('/payment/create', data);
-        console.log("Full response:", response); 
+        console.log("Full response:", response);
         console.log("purchase response", response?.data);
         return response?.data;
     } catch (error) {
         if (error instanceof AxiosError) {
-            throw new  Error(error.message || "API Error")
+            const message = error.response?.data?.message;
+            const errorMsg = Array.isArray(message) ? message.join(", ") : message || error.message || "API Error";
+            throw new Error(errorMsg);
         }
         throw new Error("Something went wrong")
     }
@@ -21,7 +23,9 @@ export const verifyPaymentStatus = async (merchOrderId: string) => {
         return response?.data;
     } catch (error) {
         if (error instanceof AxiosError) {
-            throw new  Error(error.message || "API Error")
+            const message = error.response?.data?.message;
+            const errorMsg = Array.isArray(message) ? message.join(", ") : message || error.message || "API Error";
+            throw new Error(errorMsg);
         }
         throw new Error("Something went wrong")
     }
