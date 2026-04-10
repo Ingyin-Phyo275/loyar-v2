@@ -14,12 +14,16 @@ export default function page() {
   const { verifyPayment, isError, isLoading, refetch } = useVerifyPaymentQuery(merchOrderId)
 
   const redirectToHome = () => {
-    router.push(`/home?merchOrderId=${encodeURIComponent(merchOrderId)}`)
+    if(verifyPayment?.data?.payment?.paymentType?.toLowerCase() === 'booking') {
+      router.push(`/paymentcallback?merchOrderId=${encodeURIComponent(merchOrderId)}`)
+    } else {
+      router.push(`/home?merchOrderId=${encodeURIComponent(merchOrderId)}`)
+    }
   }
 
-  const isSuccess =
-    verifyPayment?.data?.payment?.status?.toLowerCase() === 'success' &&
-    (verifyPayment?.data?.transaction?.status?.toLowerCase() === 'success' || verifyPayment?.data?.transaction?.paymentStatus?.toLowerCase() === 'success')
+  const isSuccess = verifyPayment?.data?.payment?.paymentType?.toLowerCase() === 'booking'
+    ? (verifyPayment?.data?.payment?.status?.toLowerCase() === 'success' && verifyPayment?.data?.transaction?.paymentStatus?.toLowerCase() === 'success')
+    : (verifyPayment?.data?.payment?.status?.toLowerCase() === 'success' && verifyPayment?.data?.transaction?.status?.toLowerCase() === 'success')
 
   if (isLoading) {
     return (

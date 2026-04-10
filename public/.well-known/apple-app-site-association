@@ -4,11 +4,11 @@
     "details": [
       {
         "appID": "K4YJ58FKZ2.com.mtg.loyarTwarDriver.uat", 
-        "paths": ["*"]  
+        "paths": ["/home"]
       },
       {
         "appID": "K4YJ58FKZ2.com.mtg.loyar.user.stg", 
-        "paths": ["*"]  
+        "paths": ["/paymentcallback"]
       }
     ]
   }
