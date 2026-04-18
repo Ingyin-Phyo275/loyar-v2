@@ -14,13 +14,15 @@ export default function page() {
   const { verifyPayment, isError, isLoading, refetch } = useVerifyPaymentQuery(merchOrderId)
 
   const redirectToHome = () => {
-    if(verifyPayment?.data?.payment?.paymentType?.toLowerCase() === 'booking') {
-      // User
-      window.location.href = "app1://book-taxi?merchOrderId=" + encodeURIComponent(merchOrderId);
+    const isUser = verifyPayment?.data?.payment?.paymentType?.toLowerCase() === 'booking';
+    const params = `?merchOrderId=${encodeURIComponent(merchOrderId)}`;
+    
+    if (isUser) {
+      // User App redirect
+      window.location.href = "loyar-user://book-taxi" + params;
     } else {
-      // Driver
-      router.push(`/home?merchOrderId=${encodeURIComponent(merchOrderId)}`)
-      // window.location.href = "loyar://home?merchOrderId=" + encodeURIComponent(merchOrderId);
+      // Driver App redirect
+      window.location.href = "loyar-driver://home" + params;
     }
   }
 
