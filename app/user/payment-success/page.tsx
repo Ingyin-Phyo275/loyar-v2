@@ -12,7 +12,7 @@ export default function UserPaymentSuccessPage() {
   useEffect(() => {
     if (merchOrderId) {
       // User App redirect
-      router.push(`/home?merchOrderId=${merchOrderId}`)
+      router.push(`/user/home?merchOrderId=${merchOrderId}`)
 
     }
   }, [merchOrderId]);

@@ -12,7 +12,7 @@ export default function DriverPaymentSuccessPage() {
   useEffect(() => {
     if (merchOrderId) {
       // Driver App redirect
-      router.push(`/home?merchOrderId=${merchOrderId}`)
+      router.push(`/driver/home?merchOrderId=${merchOrderId}`)
     }
   }, [merchOrderId]);
 
