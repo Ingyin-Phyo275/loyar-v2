@@ -15,14 +15,11 @@ export default function page() {
 
   const redirectToHome = () => {
     const isUser = verifyPayment?.data?.payment?.paymentType?.toLowerCase() === 'booking';
-    const params = `?merchOrderId=${encodeURIComponent(merchOrderId)}`;
 
     if (isUser) {
-      // User App redirect
-      window.location.href = "loyar-user://book-taxi" + params;
+      router.push(`/user/payment-success?merchOrderId=${merchOrderId}`);
     } else {
-      // Driver App redirect
-      router.push(`/home?merchOrderId=${encodeURIComponent(merchOrderId)}`);
+      router.push(`/driver/payment-success?merchOrderId=${merchOrderId}`);
     }
   }
 
