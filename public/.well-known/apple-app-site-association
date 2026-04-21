@@ -5,13 +5,13 @@
       {
         "appID": "K4YJ58FKZ2.com.mtg.loyarTwarDriver.uat",
         "paths": [
-          "driver/*"
+          "/driver/*"
         ]
       },
       {
         "appID": "K4YJ58FKZ2.com.mtg.loyar-user-stg",
         "paths": [
-          "user/*"
+          "/user/*"
         ]
       }
     ]
