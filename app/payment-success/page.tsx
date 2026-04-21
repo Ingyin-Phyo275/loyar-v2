@@ -4,6 +4,7 @@ import { CircleCheckBig, CircleX, Loader2 } from "lucide-react";
 import { Button } from "../../components/ui/button";
 import { useSearchParams, useRouter } from "next/navigation";
 import { useVerifyPaymentQuery } from "@/composable/query/useVerifyPaymentQuery";
+import { useEffect, useState } from "react";
 
 export default function page() {
 
@@ -12,6 +13,7 @@ export default function page() {
   const merchOrderId = searchParams.get("merch_order_id") ?? ""
 
   const { verifyPayment, isError, isLoading, refetch } = useVerifyPaymentQuery(merchOrderId)
+  const [countdown, setCountdown] = useState(5)
 
   const redirectToHome = () => {
     const isUser = verifyPayment?.data?.payment?.paymentType?.toLowerCase() === 'booking';
@@ -26,6 +28,18 @@ export default function page() {
   const isSuccess = verifyPayment?.data?.payment?.paymentType?.toLowerCase() === 'booking'
     ? (verifyPayment?.data?.payment?.status?.toLowerCase() === 'success' && verifyPayment?.data?.transaction?.paymentStatus?.toLowerCase() === 'success')
     : (verifyPayment?.data?.payment?.status?.toLowerCase() === 'success' && verifyPayment?.data?.transaction?.status?.toLowerCase() === 'success')
+
+  useEffect(() => {
+    let timer: NodeJS.Timeout;
+    if (isSuccess && countdown > 0) {
+      timer = setTimeout(() => {
+        setCountdown(prev => prev - 1);
+      }, 1000);
+    } else if (isSuccess && countdown === 0) {
+      redirectToHome();
+    }
+    return () => clearTimeout(timer);
+  }, [isSuccess, countdown]);
 
   if (isLoading) {
     return (
@@ -87,9 +101,14 @@ export default function page() {
             <div className="border-t border-dashed border-gray-200" />
 
             {/* CTA */}
-            <Button onClick={redirectToHome} className="w-full bg-green-600 hover:bg-green-700 text-white cursor-pointer h-11 rounded-xl font-semibold">
-              Back to App
-            </Button>
+            <div className="space-y-3">
+              <Button onClick={redirectToHome} className="w-full bg-green-600 hover:bg-green-700 text-white cursor-pointer h-11 rounded-xl font-semibold">
+                Back to App ({countdown}s)
+              </Button>
+              <p className="text-center text-xs text-gray-400">
+                You will be redirected automatically in {countdown} seconds
+              </p>
+            </div>
           </div>
         </div>
       </div>
