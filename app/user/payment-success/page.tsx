@@ -12,8 +12,8 @@ export default function UserPaymentSuccessPage() {
   useEffect(() => {
     if (merchOrderId) {
       // User App redirect
-      router.push(`/user/home?merchOrderId=${merchOrderId}`)
-
+      // router.push(`/user/home?merchOrderId=${merchOrderId}`)
+      window.location.href = `loyar-user://user/home?merchOrderId=${merchOrderId}`
     }
   }, [merchOrderId]);
 

@@ -12,7 +12,8 @@ export default function DriverPaymentSuccessPage() {
   useEffect(() => {
     if (merchOrderId) {
       // Driver App redirect
-      router.push(`/driver/home?merchOrderId=${merchOrderId}`)
+      // router.push(`/driver/home?merchOrderId=${merchOrderId}`)
+      window.location.href = `loyar-driver://driver/home?merchOrderId=${merchOrderId}`
     }
   }, [merchOrderId]);
 
