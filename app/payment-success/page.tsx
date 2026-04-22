@@ -13,7 +13,7 @@ export default function page() {
   const merchOrderId = searchParams.get("merch_order_id") ?? ""
 
   const { verifyPayment, isError, isLoading, refetch } = useVerifyPaymentQuery(merchOrderId)
-  const [countdown, setCountdown] = useState(5)
+  const [countdown, setCountdown] = useState(0)
 
   const redirectToHome = () => {
     const isUser = verifyPayment?.data?.payment?.paymentType?.toLowerCase() === 'booking';
