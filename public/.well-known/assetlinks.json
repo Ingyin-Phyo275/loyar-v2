@@ -3,17 +3,37 @@
     "relation": ["delegate_permission/common.handle_all_urls"],
     "target": {
       "namespace": "android_app",
-      "package_name": "com.mtg.loyar_twar_driver.uat",
+      "package_name": "com.mm.mti.driver",
+      "sha256_cert_fingerprints": [ "34:B9:49:43:A6:C3:B9:6C:EE:FE:D6:0B:75:EA:16:36:E5:F2:28:22:53:6B:A3:1D:0F:6E:EE:63:72:80:71:4E",
+        "9B:AE:C8:F6:6B:DF:D2:1C:46:6D:24:32:7F:D6:A0:BF:B1:EE:BD:08:2D:CC:12:C9:4A:BB:52:6C:66:A6:3B:D6"]
+    }
+  },
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.mm.mti.taxi",
+      "sha256_cert_fingerprints": [
+        "DA:03:C3:3D:34:12:18:CE:D0:F2:ED:1F:14:67:A2:FF:3F:9D:DA:9F:00:8B:93:D9:C8:72:3B:25:50:25:3A:5F",
+        "06:71:4D:4B:2C:BB:BC:F7:E3:FF:BB:C4:78:69:D5:55:12:96:9D:B7:7C:A9:F3:D7:69:01:18:00:5A:71:1D:0B"
+      ]
+    }
+  },
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.mm.mti.driver.uat",
       "sha256_cert_fingerprints": [
         "A9:36:21:11:6A:84:A5:C4:18:F3:B7:C3:43:58:50:5D:AD:07:FD:6E:F5:76:4C:AB:E6:12:72:B8:86:9B:48:A6"
       ]
     }
   },
-   {
+  {
     "relation": ["delegate_permission/common.handle_all_urls"],
     "target": {
       "namespace": "android_app",
-      "package_name": "com.mtg.loyar.user.stg",
+      "package_name": "com.mm.mti.taxi.stg",
       "sha256_cert_fingerprints": [
         "DA:03:C3:3D:34:12:18:CE:D0:F2:ED:1F:14:67:A2:FF:3F:9D:DA:9F:00:8B:93:D9:C8:72:3B:25:50:25:3A:5F"
       ]
