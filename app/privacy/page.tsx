@@ -6,6 +6,53 @@ import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { PageWrapper } from "@/components/page-wrapper"
 
+function renderContentWithLinks(text: string) {
+  const parts: (string | React.ReactNode)[] = []
+  let lastIndex = 0
+
+  const urlRegex = /(https?:\/\/[^\s]+)/g
+  const emailRegex = /([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)/g
+
+  const matches: Array<{ start: number; end: number; type: 'url' | 'email'; value: string }> = []
+
+  let match
+  while ((match = urlRegex.exec(text)) !== null) {
+    matches.push({ start: match.index, end: match.index + match[0].length, type: 'url', value: match[0] })
+  }
+
+  while ((match = emailRegex.exec(text)) !== null) {
+    matches.push({ start: match.index, end: match.index + match[0].length, type: 'email', value: match[0] })
+  }
+
+  matches.sort((a, b) => a.start - b.start)
+
+  matches.forEach((m) => {
+    if (m.start > lastIndex) {
+      parts.push(text.substring(lastIndex, m.start))
+    }
+    if (m.type === 'email') {
+      parts.push(
+        <a key={m.value} href={`mailto:${m.value}`} className="text-primary hover:underline">
+          {m.value}
+        </a>
+      )
+    } else {
+      parts.push(
+        <a key={m.value} href={m.value} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+          {m.value}
+        </a>
+      )
+    }
+    lastIndex = m.end
+  })
+
+  if (lastIndex < text.length) {
+    parts.push(text.substring(lastIndex))
+  }
+
+  return parts.length > 0 ? parts : text
+}
+
 const sections = [
   {
     id: "intro",
@@ -170,7 +217,7 @@ export default function PrivacyPage() {
                           </li>
                         )
                       }
-                      return <p key={i}>{line}</p>
+                      return <p key={i}>{renderContentWithLinks(line)}</p>
                     })}
                   </div>
                 </motion.div>
