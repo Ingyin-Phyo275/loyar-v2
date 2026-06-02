@@ -50,9 +50,9 @@ export default async function HomePage() {
       </SectionWrapper>
 
       {/* Reviews Section */}
-      <SectionWrapper className="py-20 lg:py-28 bg-secondary" id="reviews">
+      {/* <SectionWrapper className="py-20 lg:py-28 bg-secondary" id="reviews">
         <Reviews />
-      </SectionWrapper>
+      </SectionWrapper> */}
 
       {/* Legal & Policies Section */}
       <SectionWrapper className="py-20 lg:py-28 bg-background" id="legal">

@@ -136,7 +136,7 @@ export function Footer() {
               <li className="flex items-center gap-3">
                 <Mail size={18} className="text-primary shrink-0" />
                 <a href="mailto:support@loyarmyanmar.com" className="text-background/70 hover:text-primary transition-colors text-sm">
-                   support@loyarmyanmar.com
+                   info@loyar.com.mm
                 </a>
               </li>
             </ul>
