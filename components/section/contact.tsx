@@ -25,7 +25,7 @@ export default function Contact() {
                 <Phone className="w-6 h-6 text-primary" />
               </div>
               <h4 className="font-semibold text-foreground mb-1">Call Us</h4>
-              <p className="text-muted-foreground text-sm">+95 9 123 456 789</p>
+              <p className="text-muted-foreground text-sm">+95 966533338</p>
             </CardContent>
           </Card>
           <Card
@@ -38,7 +38,7 @@ export default function Contact() {
               </div>
               <h4 className="font-semibold text-foreground mb-1">Email Us</h4>
               <p className="text-muted-foreground text-sm">
-                info@loyartaxi.com
+                info@loyar.com.mm
               </p>
             </CardContent>
           </Card>
@@ -52,7 +52,7 @@ export default function Contact() {
               </div>
               <h4 className="font-semibold text-foreground mb-1">Visit Us</h4>
               <p className="text-muted-foreground text-sm">
-                123 Main St, Yangon
+                No.A3, Kabar Aye Villa, Mayangone Township, Yangon., Yangon, Myanmar, 11052
               </p>
             </CardContent>
           </Card>
