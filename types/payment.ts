@@ -16,5 +16,6 @@ export interface PaymentProps {
   userId: string;
   paymentMethodId: string;
   paymentMethod?: string;
+  orderId?: string;
   tripData?: TripData;
 }

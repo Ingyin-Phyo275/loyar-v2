@@ -17,6 +17,12 @@ export default function page() {
 
   const redirectToHome = () => {
     const isUser = verifyPayment?.data?.payment?.paymentType?.toLowerCase() === 'booking';
+    const tripId = verifyPayment?.data?.transaction?.tripId ?? verifyPayment?.transaction?.tripId;
+
+    if (tripId !== null && tripId !== undefined) {
+      router.push('/');
+      return;
+    }
 
     if (isUser) {
       router.push(`/user/payment-success?merchOrderId=${merchOrderId}`);

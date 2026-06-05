@@ -93,7 +93,7 @@ export function ExpandableCard({
                   <img
                     src={src}
                     alt={title}
-                    className="w-full object-contain object-center max-h-96"
+                    className="w-full object-cover object-center max-h-96"
                   />
                 </div>
 
