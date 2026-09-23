@@ -8,14 +8,15 @@ export default function UserPaymentSuccessPage() {
   const router = useRouter();
   const searchParams = useSearchParams()
   const merchOrderId = searchParams.get("merchOrderId") ?? ""
+  const paymentType = searchParams.get("paymentType") ?? ""
 
   useEffect(() => {
     if (merchOrderId) {
       // User App redirect
       // router.push(`/user/home?merchOrderId=${merchOrderId}`)
-      window.location.href = `loyar-user://user/home?merchOrderId=${merchOrderId}`
+      window.location.href = `loyar-user://user/home?merchOrderId=${merchOrderId}&paymentType=${paymentType}`
     }
-  }, [merchOrderId]);
+  }, [merchOrderId, paymentType]);
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-white">

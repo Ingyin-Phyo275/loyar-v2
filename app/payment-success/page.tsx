@@ -16,7 +16,7 @@ export default function page() {
   const [countdown, setCountdown] = useState(0)
 
   const redirectToHome = () => {
-    const isUser = verifyPayment?.data?.payment?.paymentType?.toLowerCase() === 'booking';
+    const isUser = verifyPayment?.data?.payment?.paymentType?.toLowerCase() === 'booking' || verifyPayment?.data?.payment?.paymentType?.toLowerCase() === 'schedule_booking';
     const tripId = verifyPayment?.data?.transaction?.tripId ?? verifyPayment?.transaction?.tripId;
 
     if (tripId !== null && tripId !== undefined) {
@@ -25,13 +25,13 @@ export default function page() {
     }
 
     if (isUser) {
-      router.push(`/user/payment-success?merchOrderId=${merchOrderId}`);
+      router.push(`/user/payment-success?merchOrderId=${merchOrderId}&paymentType=${verifyPayment?.data?.payment?.paymentType}`);
     } else {
       router.push(`/driver/payment-success?merchOrderId=${merchOrderId}`);
     }
   }
 
-  const isSuccess = verifyPayment?.data?.payment?.paymentType?.toLowerCase() === 'booking'
+  const isSuccess = verifyPayment?.data?.payment?.paymentType?.toLowerCase() === 'booking' || verifyPayment?.data?.payment?.paymentType?.toLowerCase() === 'schedule_booking'
     ? (verifyPayment?.data?.payment?.status?.toLowerCase() === 'success' && verifyPayment?.data?.transaction?.paymentStatus?.toLowerCase() === 'success')
     : (verifyPayment?.data?.payment?.status?.toLowerCase() === 'success' && verifyPayment?.data?.transaction?.status?.toLowerCase() === 'success')
 
